@@ -15,7 +15,11 @@
 //#include "color.hpp"
 
 
-// testing the correct initialization of instances
+/* ---------------------
+ *    V E C T O R S    
+ * --------------------*/
+
+// testing initialization of instances
 TEST_CASE("describe_vec2", "[vec2]") {
   Vec2 a;
   Vec2 b{5.1f, -9.3f};
@@ -102,7 +106,11 @@ TEST_CASE("describe_division_vec2", "[divide]") {
 
 }
 
-// testing the correct initialization of instances
+/* ---------------------
+ *    M A T R I C E S  
+ * --------------------*/
+
+// testing initialization of instances
 TEST_CASE("describe_mat2", "[mat2]") {
   Mat2 m1;
   Mat2 m2{2.5f, 1.5f, 1.0f, 2.0f};
@@ -117,6 +125,59 @@ TEST_CASE("describe_mat2", "[mat2]") {
   REQUIRE(m2.e_11 == Approx(2.0f));
 
 }
+
+// testing operator*= of mat2
+TEST_CASE("describe_operator*=", "[mat2]") {
+  Mat2 m1;
+  Mat2 m2{2.5f, -4.0f, 1.2f, 3.0f};
+  Mat2 m3{0.0f, 0.0f, -1.0f, 0.2f};
+
+  m1*=m2;
+  m2*=m3;
+  Mat2 m4 = m1 * m2; 
+
+  REQUIRE(m1.e_00 == Approx(2.5f));
+  REQUIRE(m1.e_01 == Approx(-4.0f));
+  REQUIRE(m1.e_10 == Approx(1.2f));
+  REQUIRE(m1.e_11 == Approx(3.0f));
+  REQUIRE(m2.e_00 == Approx(4.0f));
+  REQUIRE(m2.e_01 == Approx(-0.8f));
+  REQUIRE(m2.e_10 == Approx(-3.0f));
+  REQUIRE(m2.e_11 == Approx(0.6f));
+  REQUIRE(m4.e_00 == Approx(22.0f));
+  REQUIRE(m4.e_01 == Approx(-4.4f));
+  REQUIRE(m4.e_10 == Approx(-4.2f));
+  REQUIRE(m4.e_11 == Approx(0.84f)); 
+
+}
+
+// testing free operator* of mat2
+TEST_CASE("describe_operator*", "[mat2]") {
+  Mat2 m1;
+  Mat2 m2{2.5f, -4.0f, 1.2f, 3.0f};
+  Mat2 m3{0.0f, 0.0f, -1.0f, 0.2f};
+
+  Mat2 m4 = m1 * m2;
+  Mat2 m5 = m2 * m3;
+  Mat2 m6 = m4 * m5;
+
+  REQUIRE(m4.e_00 == Approx(2.5f));
+  REQUIRE(m4.e_01 == Approx(-4.0f));
+  REQUIRE(m4.e_10 == Approx(1.2f));
+  REQUIRE(m4.e_11 == Approx(3.0f));
+  REQUIRE(m5.e_00 == Approx(4.0f));
+  REQUIRE(m5.e_01 == Approx(-0.8f));
+  REQUIRE(m5.e_10 == Approx(-3.0f));
+  REQUIRE(m5.e_11 == Approx(0.6f));
+  REQUIRE(m6.e_00 == Approx(22.0f));
+  REQUIRE(m6.e_01 == Approx(-4.4f));
+  REQUIRE(m6.e_10 == Approx(-4.2f));
+  REQUIRE(m6.e_11 == Approx(0.84f)); 
+
+}
+
+
+
 
 
 int main(int argc, char *argv[]) {
