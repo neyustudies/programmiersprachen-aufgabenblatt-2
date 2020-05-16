@@ -50,15 +50,20 @@ TEST_CASE("describe_addition_vec2", "[add]") {
 TEST_CASE("describe_multiplication_vec2", "[multiply]") {
   Vec2 v1;
   Vec2 v2{2.6f, 4.0f};
+  Vec2 v3{-2.8f, 0.3f};
   float s = 2;
 
   v1*=s;
   v2*=s;
+  v3*=s;
 
   REQUIRE(v1.x_ == Approx(0.0f));
   REQUIRE(v1.y_ == Approx(0.0f));
   REQUIRE(v2.x_ == Approx(5.2f));
   REQUIRE(v2.y_ == Approx(8.0f));
+  REQUIRE(v3.x_ == Approx(-5.6f));
+  REQUIRE(v3.y_ == Approx(0.6f));
+
 }
 
 // testing substraction of vec2
@@ -93,7 +98,7 @@ TEST_CASE("describe_division_vec2", "[divide]") {
   REQUIRE(v2.x_ == Approx(1.0f));
   REQUIRE(v2.y_ == Approx(0.65f));
   REQUIRE(v3.x_ == Approx(0.55f));
-  REQUIRE(v3.y_ == Approx(-1,65f));
+  REQUIRE(v3.y_ == Approx(-1.65f));
 
 }
 
