@@ -9,12 +9,6 @@
 #include <cmath>
 #include <iostream>
 
-Mat2::Mat2():
-  e_00{1.0f},
-  e_01{0.0f},
-  e_10{0.0f},
-  e_11{1.0f} {}
-
 // definition of operator*= for mat2
 Mat2& Mat2::operator*=(Mat2 const& m) {
   float m_1 = e_00 * m.e_00 + e_01 * m.e_10;
@@ -35,10 +29,7 @@ float Mat2::det() const {
   return e_00 * e_11 - e_10 * e_01;
 }
 
-
-/* ------------------------------
- *  F R E E  F U N C T I O N S  
- * -----------------------------*/
+/*--- Free Functions of mat2 -------------------------*/
 
 // definition of operator* for mat2
 Mat2 operator*(Mat2 const& m1, Mat2 const& m2) {
