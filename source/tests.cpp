@@ -38,8 +38,8 @@ TEST_CASE("describe_addition_vec2", "[addition vec2]") {
   Vec2 v1;
   Vec2 v2{4.3f, 1.5f};
   Vec2 v3{3.0f, -2.7f};
-  v1+=v2;
-  v2+=v3;
+  v1 += v2;
+  v2 += v3;
   REQUIRE(v1.x == Approx(4.3f));
   REQUIRE(v1.y == Approx(1.5f));
   REQUIRE(v2.x == Approx(7.3f));
@@ -53,9 +53,9 @@ TEST_CASE("describe_multiplication_vec2", "[multiplication vec2]") {
   Vec2 v2{2.6f, 4.0f};
   Vec2 v3{-2.8f, 0.3f};
   float s = 2;
-  v1*=s;
-  v2*=s;
-  v3*=s;
+  v1 *= s;
+  v2 *= s;
+  v3 *= s;
   REQUIRE(v1.x == Approx(0.0f));
   REQUIRE(v1.y == Approx(0.0f));
   REQUIRE(v2.x == Approx(5.2f));
@@ -70,8 +70,8 @@ TEST_CASE("describe_substraction_vec2", "[subtraction vec2]") {
   Vec2 v1{3.0f, 1.3f};
   Vec2 v2;
   Vec2 v3{6.3f, -4.7f};
-  v1-=v2;
-  v2-=v3;
+  v1 -= v2;
+  v2 -= v3;
   REQUIRE(v1.x == Approx(3.0f));
   REQUIRE(v1.y == Approx(1.3f));
   REQUIRE(v2.x == Approx(-6.3f));
@@ -85,9 +85,9 @@ TEST_CASE("describe_division_vec2", "[division vec2]") {
   Vec2 v2{2.0f, 1.3f};
   Vec2 v3{1.1f, -3.3f};
   float s = 2;
-  v1/=s;
-  v2/=s;
-  v3/=s;
+  v1 /= s;
+  v2 /= s;
+  v3 /= s;
   REQUIRE(v1.x == Approx(4.0f));
   REQUIRE(v1.y == Approx(2.3f));
   REQUIRE(v2.x == Approx(1.0f));
@@ -95,6 +95,70 @@ TEST_CASE("describe_division_vec2", "[division vec2]") {
   REQUIRE(v3.x == Approx(0.55f));
   REQUIRE(v3.y == Approx(-1.65f));
 
+}
+
+/* -----------------------------------------
+ *   F R E E   F U N C T I O N S   V E C 2 
+ * ----------------------------------------*/
+
+// testing addition
+TEST_CASE("describe_addition", "[addition vec2]") {
+  Vec2 v1;
+  Vec2 v2{4.3f, 1.5f};
+  Vec2 v3{3.0f, -2.7f};
+  v1 = v1 + v2;
+  v2 = v2 + v3;
+  REQUIRE(v1.x == Approx(4.3f));
+  REQUIRE(v1.y == Approx(1.5f));
+  REQUIRE(v2.x == Approx(7.3f));
+  REQUIRE(v2.y == Approx(-1.2f));
+}
+
+// testing substraction
+TEST_CASE("describe_substraction", "[substraction vec2]") {
+  Vec2 v1{3.0f, 1.3f};
+  Vec2 v2;
+  Vec2 v3{6.3f, -4.7f};
+  v1 = v1 - v2;
+  v2 = v2 - v3;
+  REQUIRE(v1.x == Approx(3.0f));
+  REQUIRE(v1.y == Approx(1.3f));
+  REQUIRE(v2.x == Approx(-6.3f));
+  REQUIRE(v2.y == Approx(4.7f));
+}
+
+// testing multiplication
+TEST_CASE("describe_multiplication", "[multiplication vec2]") {
+  Vec2 v1;
+  Vec2 v2{2.6f, 4.0f};
+  Vec2 v3{-2.8f, 0.3f};
+  float s = 2;
+  v1 = v1 * s;
+  v2 = v2 * s;
+  v3 = v3 * s;
+  REQUIRE(v1.x == Approx(0.0f));
+  REQUIRE(v1.y == Approx(0.0f));
+  REQUIRE(v2.x == Approx(5.2f));
+  REQUIRE(v2.y == Approx(8.0f));
+  REQUIRE(v3.x == Approx(-5.6f));
+  REQUIRE(v3.y == Approx(0.6f));
+}
+
+// testing division
+TEST_CASE("describe_division", "[division vec2]") {
+  Vec2 v1{8.0f, 4.6f};
+  Vec2 v2{2.0f, 1.3f};
+  Vec2 v3{1.1f, -3.3f};
+  float s = 2;
+  v1 = v1 / s;
+  v2 = v2 / s;
+  v3 = v3 / s;
+  REQUIRE(v1.x == Approx(4.0f));
+  REQUIRE(v1.y == Approx(2.3f));
+  REQUIRE(v2.x == Approx(1.0f));
+  REQUIRE(v2.y == Approx(0.65f));
+  REQUIRE(v3.x == Approx(0.55f));
+  REQUIRE(v3.y == Approx(-1.65f));
 }
 
 /* ---------------------
@@ -121,8 +185,8 @@ TEST_CASE("describe_operator*=", "[multiplication mat2]") {
   Mat2 m1;
   Mat2 m2{2.0f, 3.0f, 4.0f, 5.0f};
   Mat2 m3{1.0f, 2.0f, -1.0f, 4.0f};
-  m2*=m1;
-  m3*=m2;
+  m2 *= m1;
+  m3 *= m2;
   REQUIRE(m2.e_00 == Approx(2.0f)); 
   REQUIRE(m2.e_10 == Approx(3.0f));
   REQUIRE(m2.e_01 == Approx(4.0f));
@@ -144,7 +208,6 @@ TEST_CASE("describe_determinant", "[determinant mat2]") {
   REQUIRE(m3.det() == Approx(2.0f));
 
 }
-
 
 /* -----------------------------------------
  *   F R E E   F U N C T I O N S   M A T 2 
