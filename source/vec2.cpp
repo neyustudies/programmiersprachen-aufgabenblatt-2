@@ -6,6 +6,7 @@
 */
 
 #include "vec2.hpp"
+#include <iostream>
 
 // definition addition for Vec2
 Vec2& Vec2::operator+=(Vec2 const& v) {
@@ -30,31 +31,31 @@ Vec2& Vec2::operator-=(Vec2 const& v) {
 
 // definition division for Vec2
 Vec2& Vec2::operator/=(float s) {
-  x /= s;
-  y /= s;
-  return *this;
+  if(s == 0) {
+    std::cerr << "Error: divsion by zero\n";
+  } x /= s;
+    y /= s;
+    return *this;
 }
 
 /*--- Free Functions of vec2 -------------------------*/
 
 Vec2 operator+(Vec2 const& u, Vec2 const& v) {
-  return Vec2{u.x + v.x, u.y + v.y};
+  return Vec2(u) += v;
 }
 
 Vec2 operator-(Vec2 const& u, Vec2 const& v) {
-  return Vec2{u.x - v.x, u.y - v.y};
+  return Vec2(u) -= v;
 }
 
 Vec2 operator*(Vec2 const& v, float s) {
-  return Vec2{v.x * s, v.y * s};
+  return Vec2(v) *= s;
 }
 
 Vec2 operator/(Vec2 const& v, float s) {
-  if (s == 0) {
-    return v;
-  } return Vec2{v.x / s, v.y / s};
+  return Vec2(v) /= s;
 }
 
 Vec2 operator*(float s, Vec2 const& v) {
-  return v * s;
+  return Vec2(v) *= s;
 }
