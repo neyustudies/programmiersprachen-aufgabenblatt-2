@@ -1,4 +1,9 @@
 #include "window.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
+#include "color.hpp"
+#include "vec2.hpp"
+#include "mat2.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
@@ -51,6 +56,34 @@ int main(int argc, char* argv[])
     unsigned int font_size = 35;
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
+
+/*---------------------------------------------------------------------------------------*/
+
+    Color     green{0.6, 0.9, 0.6};
+    Color     blue {0.6, 0.9, 1.0};
+    Rectangle rec_4{{610, 510},{450, 700}, green};
+    Rectangle rec_1{Vec2{160, 460}, Vec2{340, 280}, green};
+    Rectangle rec_2{Vec2{120, 250}, Vec2{630, 520}, blue};
+    Rectangle rec_3{Vec2{100, 100}, Vec2{200, 200}, green};
+    Circle    cir_1{Vec2{400, 400}, 100, green};
+    Circle    cir_2{Vec2{100, 700}, 100, green};
+
+    win.draw_point(rec_1.min().x, rec_1.min().y, 0, 0, 0);
+    win.draw_point(rec_1.max().x, rec_1.max().y, 0, 0, 0);
+    win.draw_point(rec_4.min().x, rec_4.min().y, 0, 0, 0);
+    win.draw_point(rec_4.max().x, rec_4.max().y, 0, 0, 0);
+
+    win.draw_line(170, 470, 450, 700, 0.7, 0.7, 0.7, 1);
+    win.draw_line(450, 700, 610, 510, 0.7, 0.7, 0.7, 1);
+    win.draw_line(610, 510, 340, 280, 0.7, 0.7, 0.7, 1);
+    win.draw_line(340, 280, 170, 470, 0.7, 0.7, 0.7, 1);
+
+    cir_1.draw(win);
+    rec_2.draw(win);
+
+    win.draw_text(690, 775, 22, "Lisa Piekarski");
+
+/*---------------------------------------------------------------------------------------*/
 
     win.update();
   }
