@@ -15,6 +15,7 @@
 class Rectangle {
 
   public:
+    Rectangle();
     Rectangle(Vec2 const& min, Vec2 const& max);
     Rectangle(Vec2 const& min, Vec2 const& max, Color const& col);
     float area() const;
@@ -23,6 +24,7 @@ class Rectangle {
     float height() const;
     Vec2 max() const;
     Vec2 min() const;
+    Color color() const;
 
   private:
     Vec2 max_;
