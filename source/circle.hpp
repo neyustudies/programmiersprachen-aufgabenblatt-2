@@ -9,6 +9,7 @@
 #define CIRCLE_HPP
 
 #include "vec2.hpp"
+#include "color.hpp"
 
 class Circle {
   public:
@@ -17,10 +18,12 @@ class Circle {
     float circumference() const;
     float radius() const;
     Vec2 center() const;
+    Color color() const;
 
   private:
     Vec2 center_;
     float radius_ = 0.0f;
+    Color color_;
 
 
 };

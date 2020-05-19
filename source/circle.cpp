@@ -33,3 +33,7 @@ Vec2 Circle::center() const {
   return center_;
 }
 
+Color Circle::color() const {
+  return color_;
+}
+
