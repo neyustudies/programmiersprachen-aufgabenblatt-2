@@ -10,6 +10,7 @@
 
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 
 class Rectangle {
@@ -25,6 +26,8 @@ class Rectangle {
     Vec2 max() const;
     Vec2 min() const;
     Color color() const;
+    void draw(Window const& win) const;
+    void draw(Window const& win, Color const& col) const;
 
   private:
     Vec2 max_;
