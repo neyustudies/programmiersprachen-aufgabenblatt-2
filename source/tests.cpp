@@ -293,7 +293,7 @@ TEST_CASE("describe_rotate", "[rotate mat2]") {
 }
 
 
-/* ---- A u f g a b e   2 . 9  f f --------------------------------------*/
+/* ---- A u f g a b e n   2 . 9  f f ----------------------------------------*/
 
 TEST_CASE("describe_circumference_circle", "[circum circle]") {
   Circle c1{Vec2{1, 2}, 5};
@@ -302,6 +302,25 @@ TEST_CASE("describe_circumference_circle", "[circum circle]") {
   REQUIRE(c2.circumference() == Approx(2 * M_PI));
 
 }
+
+TEST_CASE("describe_circumference_rectangle", "[circum rectangle]") {
+  Rectangle r1{Vec2{1, 2}, Vec2{2, 3}};
+  Rectangle r2{Vec2{5, 2}, Vec2{1, 5}};
+  REQUIRE(r1.circumference() == 4);
+  REQUIRE(r2.circumference() == 14);
+}
+
+TEST_CASE("describe_color", "[color]") {
+  Color clr1{};
+  Color clr2{0.3f, 0.6f, 1.0f};
+  REQUIRE(clr1.r == Approx(0.5f));
+  REQUIRE(clr1.g == Approx(0.5f));
+  REQUIRE(clr1.b == Approx(0.5f));
+  REQUIRE(clr2.r == Approx(0.3f));
+  REQUIRE(clr2.g == Approx(0.6f));
+  REQUIRE(clr2.b == Approx(1.0f));
+}
+
 
 
 int main(int argc, char *argv[]) {
