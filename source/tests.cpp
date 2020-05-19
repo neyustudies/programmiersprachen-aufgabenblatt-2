@@ -135,7 +135,7 @@ TEST_CASE("describe_multiplication", "[multiplication vec2]") {
   float s = 2;
   v1 = v1 * s;
   v2 = v2 * s;
-  v3 = v3 * s;
+  v3 = s * v3;
   REQUIRE(v1.x == Approx(0.0f));
   REQUIRE(v1.y == Approx(0.0f));
   REQUIRE(v2.x == Approx(5.2f));
@@ -291,6 +291,18 @@ TEST_CASE("describe_rotate", "[rotate mat2]") {
   REQUIRE(m2.e_11 == Approx(0.52532f));
 
 }
+
+
+/* ---- A u f g a b e   2 . 9  f f --------------------------------------*/
+
+TEST_CASE("describe_circumference_circle", "[circum circle]") {
+  Circle c1{Vec2{1, 2}, 5};
+  Circle c2{Vec2{5, 2}, 1};
+  REQUIRE(c1.circumference() == Approx(c1.radius() * 2 * M_PI));
+  REQUIRE(c2.circumference() == Approx(2 * M_PI));
+
+}
+
 
 int main(int argc, char *argv[]) {
   return Catch::Session().run(argc, argv);

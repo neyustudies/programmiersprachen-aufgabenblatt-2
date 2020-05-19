@@ -46,7 +46,7 @@ float Rectangle::area() const {
 }
 
 float Rectangle::circumference() const {
-  return (width() * height()) * 2;
+  return (width() + height()) * 2;
 }
 
 Vec2 Rectangle::max() const {
