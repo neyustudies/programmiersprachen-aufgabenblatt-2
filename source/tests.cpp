@@ -321,7 +321,23 @@ TEST_CASE("describe_color", "[color]") {
   REQUIRE(clr2.b == Approx(1.0f));
 }
 
+TEST_CASE("describe_is_inside_circle", "[is_inside circle]") {
+  Circle cir{Vec2{400, 400}, 100};
+  Vec2 p1 {250.0f,250.0f};
+  Vec2 p2 {450.0f,450.0f};
+  REQUIRE(cir.is_inside(p1) == false);
+  REQUIRE(cir.is_inside(p2) == true);
 
+}
+
+TEST_CASE("describe_is_inside_rectangle", "[is_inside rectangle]") {
+  Rectangle r1{};
+  Vec2 p1 {400.0f,280.0f};
+  Vec2 p2 {650.0f,350.0f};
+  REQUIRE(r1.is_inside(p1) == true);
+  REQUIRE(r1.is_inside(p2) == false);
+
+}
 
 int main(int argc, char *argv[]) {
   return Catch::Session().run(argc, argv);
