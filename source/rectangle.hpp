@@ -18,7 +18,7 @@ class Rectangle {
   public:
     Rectangle();
     Rectangle(Vec2 const& min, Vec2 const& max);
-    Rectangle(Vec2 const& min, Vec2 const& max, Color const& col);
+    Rectangle(Vec2 const& min, Vec2 const& max, Color const& clr);
     float area() const;
     float circumference() const;
     float width() const;
@@ -27,7 +27,8 @@ class Rectangle {
     Vec2 min() const;
     Color color() const;
     void draw(Window const& win) const;
-    void draw(Window const& win, Color const& col) const;
+    void draw(Window const& win, Color const& clr) const;
+    void draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const;
 
   private:
     Vec2 max_;

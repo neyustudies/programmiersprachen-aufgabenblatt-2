@@ -13,7 +13,9 @@
 #include "window.hpp"
 
 class Circle {
+
   public:
+    Circle();
     Circle(Vec2 const& ctr, float r);
     Circle(Vec2 const& ctr, float r, Color const& clr);
     float area() const;
@@ -23,6 +25,7 @@ class Circle {
     Color color() const;
     void draw(Window const& win) const;
     void draw(Window const& win, Color const& clr) const;
+    void draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const;
 
   private:
     Vec2 center_;
