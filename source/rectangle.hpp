@@ -29,6 +29,7 @@ class Rectangle {
     void draw(Window const& win) const;
     void draw(Window const& win, Color const& clr) const;
     void draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const;
+    bool is_inside(Vec2 const& point) const;
 
   private:
     Vec2 max_;

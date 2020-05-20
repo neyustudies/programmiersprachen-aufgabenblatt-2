@@ -12,8 +12,8 @@
 
 // default initialization
 Rectangle::Rectangle():
-  max_{1.0f,1.0f},
-  min_{0.0f,0.0f},
+  max_{500.0f,300.0f},
+  min_{300.0f,200.0f},
   color_{0.7f,0.7f,0.7f} {}
 
 Rectangle::Rectangle(Vec2 const& max, Vec2 const& min) {
@@ -76,4 +76,10 @@ void Rectangle::draw(Window const& win, Color clr, float thickness, bool const& 
   win.draw_line(max_.x, min_.y, max_.x, max_.y, color_.r, color_.g, color_.b);
   win.draw_line(max_.x, max_.y, min_.x, max_.y, color_.r, color_.g, color_.b);
   win.draw_line(min_.x, max_.y, min_.x, min_.y, color_.r, color_.g, color_.b);
+}
+
+bool Rectangle::is_inside(Vec2 const& point) const {
+  if(min_.x <= point.x && point.x <= max_.x && min_.y <= point.y && point.y <= max_.y){
+    return true;
+  } return false;   
 }
