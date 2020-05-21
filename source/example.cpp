@@ -23,6 +23,20 @@ int main(int argc, char* argv[])
 
     auto t = win.get_time();
 
+    int   second  = int(t) % 60;
+    int   minute  = t / 60;
+    int   hour    = t / 3600;
+
+    std::string time_to_string = "time: " + std::to_string(hour) 
+                                          + "h " 
+                                          + std::to_string(minute)
+                                          + "min "
+                                          + std::to_string(second)
+                                          + "sec";
+
+    win.draw_text(10, 760, 30, time_to_string);
+
+
     float x1 = 400.f + 380.f * std::sin(t);
     float y1 = 400.f + 380.f * std::cos(t);
 
@@ -54,7 +68,7 @@ int main(int argc, char* argv[])
     
     int text_offset_x = 10;
     int text_offset_y = 5;
-    unsigned int font_size = 35;
+    unsigned int font_size = 30;
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
@@ -68,28 +82,39 @@ int main(int argc, char* argv[])
     Color       green   {0.6, 0.9, 0.6};
     Color       blue    {0.6, 0.9, 1.0};
     Color       pink    {0.9, 0.4, 0.6};
-    Rectangle   rec_4   {{610, 510},{450, 700}, green};
-    Rectangle   rec_1   {max2, min2, green};
-    Rectangle   rec_2   {max1, min1, green};
-    Rectangle   rec_3   {max3, min3, blue};
-    Circle      cir_1   {Vec2{400, 400}, 300, blue};
-    Circle      cir_2   {Vec2{400, 400}, 200, pink};
-    Circle      cir_3   {Vec2{400, 400}, 210};
+    Color       turq    {0.1, 0.8, 0.7};
+    Color       tu      {0.2, 0.8, 0.6};
+  
+    
+    Circle      cir_1   {{400, 400}, 300, blue};
+    Circle      cir_2   {{400, 400}, 10, tu};
+    Circle      cir_3   {{400, 400}, 280, turq};
+    Rectangle   left    {{170, 403},{120, 400}, turq};
+    Rectangle   right   {{680, 403},{620, 400}, turq};
+    Rectangle   top     {{402, 120},{398, 170}, turq};
+    Rectangle   bottom  {{402, 680},{398, 630}, turq};
 
-
-    cir_1.draw(win, blue, 1.0f, true);
-    cir_2.draw(win, blue, 1.0f, true);
-    rec_1.draw(win, green, 1.0f, true); 
-    rec_2.draw(win, green, 1.0f, true);
+    cir_1.draw(win, blue, 3.0f, false);
+    cir_2.draw(win, blue, 5.0f, false);
+    left.draw(win, turq, 1.0f, true);
+    right.draw(win, turq, 1.0f, true);  
+    top.draw(win, green, 1.0f, true);
+    bottom.draw(win, green, 1.0f, true);
 
     win.draw_text(690, 775, 22, "Lisa Piekarski");
+    win.draw_text(180, 370, 70, "9");
+    win.draw_text(580, 370, 70, "3");
+    win.draw_text(385, 550, 70, "6");
+    win.draw_text(370, 180, 70, "12");
     
     std::vector<Rectangle>Rectangles;
     std::vector<Circle>Circles;
 
-    Rectangles.push_back(rec_1);
-    Rectangles.push_back(rec_2);
-    Rectangles.push_back(rec_3);
+
+    Rectangles.push_back(left);
+    Rectangles.push_back(right);
+    Rectangles.push_back(top);
+    Rectangles.push_back(bottom);
 
     Circles.push_back(cir_1);
     Circles.push_back(cir_2);
