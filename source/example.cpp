@@ -58,32 +58,28 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
-/*---------------------------------------------------------------------------------------*/
-    Vec2      min  {300.0f, 400.0f};
-    Vec2      max  {600.0f, 700.0f};
-    Color     green{0.6, 0.9, 0.6};
-    Color     blue {0.6, 0.9, 1.0};
-    Rectangle rec_4{{610, 510},{450, 700}, green};
-    Rectangle rec_1{Vec2{160, 460}, Vec2{340, 280}, green};
-    Rectangle rec_2{max, min, blue};
-    Rectangle rec_3{Vec2{100, 100}, Vec2{200, 200}, green};
-    Circle    cir_1{Vec2{400, 400}, 100};
-    Circle    cir_2{Vec2{650, 160}, 75, green};
 
-/*
-    win.draw_point(rec_1.min().x, rec_1.min().y, 0, 0, 0);
-    win.draw_point(rec_1.max().x, rec_1.max().y, 0, 0, 0);
-    win.draw_point(rec_4.min().x, rec_4.min().y, 0, 0, 0);
-    win.draw_point(rec_4.max().x, rec_4.max().y, 0, 0, 0);
+    Vec2        min1    {300.0f, 400.0f};
+    Vec2        max1    {400.0f, 500.0f};
+    Vec2        min2    {400.0f, 300.0f};
+    Vec2        max2    {500.0f, 400.0f};
+    Vec2        min3    {300.0f, 300.0f};
+    Vec2        max3    {500.0f, 500.0f};
+    Color       green   {0.6, 0.9, 0.6};
+    Color       blue    {0.6, 0.9, 1.0};
+    Color       pink    {0.9, 0.4, 0.6};
+    Rectangle   rec_4   {{610, 510},{450, 700}, green};
+    Rectangle   rec_1   {max2, min2, green};
+    Rectangle   rec_2   {max1, min1, green};
+    Rectangle   rec_3   {max3, min3, blue};
+    Circle      cir_1   {Vec2{400, 400}, 300, blue};
+    Circle      cir_2   {Vec2{400, 400}, 200, pink};
+    Circle      cir_3   {Vec2{400, 400}, 210};
 
 
-    win.draw_line(170, 470, 450, 700, 0.7, 0.7, 0.7, 1);
-    win.draw_line(450, 700, 610, 510, 0.7, 0.7, 0.7, 1);
-    win.draw_line(610, 510, 340, 280, 0.7, 0.7, 0.7, 1);
-    win.draw_line(340, 280, 170, 470, 0.7, 0.7, 0.7, 1);
-*/
     cir_1.draw(win, blue, 1.0f, true);
     cir_2.draw(win, blue, 1.0f, true);
+    rec_1.draw(win, green, 1.0f, true); 
     rec_2.draw(win, green, 1.0f, true);
 
     win.draw_text(690, 775, 22, "Lisa Piekarski");
@@ -97,7 +93,7 @@ int main(int argc, char* argv[])
 
     Circles.push_back(cir_1);
     Circles.push_back(cir_2);
-    //circles.push_back(cir_3);
+    Circles.push_back(cir_3);
 
 
     for(Rectangle const& rec: Rectangles){
@@ -116,9 +112,6 @@ int main(int argc, char* argv[])
         cir.draw(win);
       }
     }
-
-
-/*---------------------------------------------------------------------------------------*/
 
     win.update();
   }
