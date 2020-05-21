@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include <vector>
 
 
 int main(int argc, char* argv[])
@@ -58,30 +59,64 @@ int main(int argc, char* argv[])
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
 /*---------------------------------------------------------------------------------------*/
-
+    Vec2      min  {300.0f, 400.0f};
+    Vec2      max  {600.0f, 700.0f};
     Color     green{0.6, 0.9, 0.6};
     Color     blue {0.6, 0.9, 1.0};
     Rectangle rec_4{{610, 510},{450, 700}, green};
     Rectangle rec_1{Vec2{160, 460}, Vec2{340, 280}, green};
-    Rectangle rec_2{Vec2{120, 250}, Vec2{630, 520}, blue};
+    Rectangle rec_2{max, min, blue};
     Rectangle rec_3{Vec2{100, 100}, Vec2{200, 200}, green};
-    Circle    cir_1{Vec2{400, 400}, 100, green};
-    Circle    cir_2{Vec2{100, 700}, 100, green};
+    Circle    cir_1{Vec2{400, 400}, 100};
+    Circle    cir_2{Vec2{650, 160}, 75, green};
 
+/*
     win.draw_point(rec_1.min().x, rec_1.min().y, 0, 0, 0);
     win.draw_point(rec_1.max().x, rec_1.max().y, 0, 0, 0);
     win.draw_point(rec_4.min().x, rec_4.min().y, 0, 0, 0);
     win.draw_point(rec_4.max().x, rec_4.max().y, 0, 0, 0);
 
+
     win.draw_line(170, 470, 450, 700, 0.7, 0.7, 0.7, 1);
     win.draw_line(450, 700, 610, 510, 0.7, 0.7, 0.7, 1);
     win.draw_line(610, 510, 340, 280, 0.7, 0.7, 0.7, 1);
     win.draw_line(340, 280, 170, 470, 0.7, 0.7, 0.7, 1);
-
-    cir_1.draw(win);
-    rec_2.draw(win);
+*/
+    cir_1.draw(win, blue, 1.0f, true);
+    cir_2.draw(win, blue, 1.0f, true);
+    rec_2.draw(win, green, 1.0f, true);
 
     win.draw_text(690, 775, 22, "Lisa Piekarski");
+    
+    std::vector<Rectangle>Rectangles;
+    std::vector<Circle>Circles;
+
+    Rectangles.push_back(rec_1);
+    Rectangles.push_back(rec_2);
+    Rectangles.push_back(rec_3);
+
+    Circles.push_back(cir_1);
+    Circles.push_back(cir_2);
+    //circles.push_back(cir_3);
+
+
+    for(Rectangle const& rec: Rectangles){
+      if(rec.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){ 
+        rec.draw(win, blue, 2.0f, true);
+      }
+      else{
+        rec.draw(win);
+      }
+    }
+    for(Circle const& cir: Circles){
+      if(cir.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){
+        cir.draw(win, blue, 2.0f, true);
+      }
+      else{
+        cir.draw(win);
+      }
+    }
+
 
 /*---------------------------------------------------------------------------------------*/
 
