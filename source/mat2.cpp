@@ -29,7 +29,7 @@ float Mat2::det() const {
   return e_00 * e_11 - e_01 * e_10;
 }
 
-/*--- Free Functions of mat2 -------------------------*/
+/*--- Free Functions of mat2 -----------------------------*/
 
 // definition of operator* for mat2
 Mat2 operator*(Mat2 const& m1, Mat2 const& m2) {
@@ -53,10 +53,10 @@ Mat2 inverse(Mat2 const& m) {
   if(m.det() == 0) {
     std::cerr << "Error: singular matrix, there is no inverse\n";
     return m;
-  } return Mat2{(m.e_11 / m.det()),
+  } return Mat2{  (m.e_11 / m.det()),
                 (-(m.e_10 / m.det())),
                 (-(m.e_01 / m.det())),
-                (m.e_00 / m.det())}; 
+                  (m.e_00 / m.det())}; 
 }
 
 // Transpose Matrix
