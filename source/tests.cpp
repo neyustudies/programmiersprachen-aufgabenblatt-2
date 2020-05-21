@@ -306,36 +306,43 @@ TEST_CASE("describe_circumference_circle", "[circum circle]") {
 TEST_CASE("describe_circumference_rectangle", "[circum rectangle]") {
   Rectangle r1{Vec2{1, 2}, Vec2{2, 3}};
   Rectangle r2{Vec2{5, 2}, Vec2{1, 5}};
-  REQUIRE(r1.circumference() == 4);
-  REQUIRE(r2.circumference() == 14);
+  REQUIRE(r1.circumference() == Approx(4.0f));
+  REQUIRE(r2.circumference() == Approx(2.0f));
 }
 
 TEST_CASE("describe_color", "[color]") {
   Color clr1{};
   Color clr2{0.3f, 0.6f, 1.0f};
-  REQUIRE(clr1.r == Approx(0.5f));
-  REQUIRE(clr1.g == Approx(0.5f));
-  REQUIRE(clr1.b == Approx(0.5f));
+  REQUIRE(clr1.r == Approx(0.7f));
+  REQUIRE(clr1.g == Approx(0.7f));
+  REQUIRE(clr1.b == Approx(0.7f));
   REQUIRE(clr2.r == Approx(0.3f));
   REQUIRE(clr2.g == Approx(0.6f));
   REQUIRE(clr2.b == Approx(1.0f));
 }
 
 TEST_CASE("describe_is_inside_circle", "[is_inside circle]") {
-  Circle cir{Vec2{400, 400}, 100};
-  Vec2 p1 {250.0f,250.0f};
-  Vec2 p2 {450.0f,450.0f};
-  REQUIRE(cir.is_inside(p1) == false);
-  REQUIRE(cir.is_inside(p2) == true);
+  Circle cir1{};
+  Circle cir2{Vec2{400, 400}, 100};
+  Vec2 p1{250.0f, 250.0f};
+  Vec2 p2{450.0f, 450.0f};
+  REQUIRE(cir1.is_inside(p1) == false);
+  REQUIRE(cir1.is_inside(p2) == true);  
+  REQUIRE(cir2.is_inside(p1) == false);
+  REQUIRE(cir2.is_inside(p2) == true);
 
 }
 
 TEST_CASE("describe_is_inside_rectangle", "[is_inside rectangle]") {
   Rectangle r1{};
-  Vec2 p1 {400.0f,280.0f};
-  Vec2 p2 {650.0f,350.0f};
-  REQUIRE(r1.is_inside(p1) == true);
+  Rectangle r2{Vec2{100, 200}, Vec2{600, 700}};
+  Vec2 p1{400.0f, 280.0f};
+  Vec2 p2{650.0f, 350.0f};
+  Vec2 p3{120.0f, 130.0f};
+  REQUIRE(r1.is_inside(p1) == false);
   REQUIRE(r1.is_inside(p2) == false);
+  REQUIRE(r2.is_inside(p1) == false);
+  REQUIRE(r2.is_inside(p2) == false);
 
 }
 
