@@ -8,6 +8,7 @@
 #include "vec2.hpp"
 #include <iostream>
 
+
 // definition addition for Vec2
 Vec2& Vec2::operator+=(Vec2 const& v) {
   x += v.x;
