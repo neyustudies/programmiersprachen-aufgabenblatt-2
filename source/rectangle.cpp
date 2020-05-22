@@ -28,7 +28,10 @@ Rectangle::Rectangle(Vec2 const& max, Vec2 const& min, Color const& clr):
 float Rectangle::circumference() const {
   float width  = max_.x - min_.x;
   float height = max_.y - min_.y;
-  return (2 * (width + height));
+  float circum = 2 * (width + height);
+  if(circum < 0) {
+    return circum * (-1);
+  } return circum;
 }
 
 Vec2 Rectangle::max() const {
