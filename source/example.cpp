@@ -10,9 +10,21 @@
 #include <vector>
 
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
+
   Window win{std::make_pair(800,800)};
+
+  Color       green   {0.6, 0.9, 0.6};
+  Color       blue    {0.6, 0.9, 1.0};
+  Color       turq    {0.1, 0.8, 0.7};
+  Circle      cir_1   {{400, 400}, 300, blue};
+  Circle      cir_2   {{400, 400}, 6, blue};
+  Circle      cir_3   {{400, 400}, 280, turq};
+  Rectangle   left    {{170, 403},{120, 400}, turq};
+  Rectangle   right   {{680, 403},{620, 400}, turq};
+  Rectangle   top     {{402, 170},{398, 120}, turq};
+  Rectangle   bottom  {{402, 680},{398, 630}, turq};  
+  
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -23,18 +35,31 @@ int main(int argc, char* argv[])
 
     auto t = win.get_time();
 
-    int   second  = int(t) % 60;
-    int   minute  = t / 60;
-    int   hour    = t / 3600;
+    int   second    = int(t) % 60;
+    int   minute    = t / 60;
+    int   hour      = t / 3600;
+    float segments  = (2 * M_PI) / 60; // for analog clock
+
 
     std::string time_to_string = "time: " + std::to_string(hour) 
-                                          + "h " 
-                                          + std::to_string(minute)
-                                          + "min "
-                                          + std::to_string(second)
-                                          + "sec";
+                                           + "h " 
+                                           + std::to_string(minute)
+                                           + "min "
+                                           + std::to_string(second)
+                                           + "sec";
 
-    win.draw_text(10, 760, 30, time_to_string);
+    // display time since the start of "Fensterchen"
+    win.draw_text (10, 760, 30, time_to_string);
+
+    // second hand
+    win.draw_line (400, 400, 180 * cos(segments * (second - 15)) + 400, 
+                   180 * sin(segments * (second - 15)) + 400, 1.0, 0.5, 0, 1.5);
+    // minute hand
+    win.draw_line (400, 400, 150 * cos(segments * (minute - 15)) + 400, 
+                   160 * sin(segments * (minute - 15)) + 400, 0.6, 0.5, 1.0, 2.8);
+    // hour hand                
+    win.draw_line (400, 400, 90  * cos(segments * 5 * (hour - 15)) + 400, 
+                   110 * sin(segments * 5 * (hour - 15)) + 400, 0.3, 1.0, 0.3, 4.5);
 
 
     float x1 = 400.f + 380.f * std::sin(t);
@@ -72,40 +97,19 @@ int main(int argc, char* argv[])
     
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
-
-    Vec2        min1    {300.0f, 400.0f};
-    Vec2        max1    {400.0f, 500.0f};
-    Vec2        min2    {400.0f, 300.0f};
-    Vec2        max2    {500.0f, 400.0f};
-    Vec2        min3    {300.0f, 300.0f};
-    Vec2        max3    {500.0f, 500.0f};
-    Color       green   {0.6, 0.9, 0.6};
-    Color       blue    {0.6, 0.9, 1.0};
-    Color       pink    {0.9, 0.4, 0.6};
-    Color       turq    {0.1, 0.8, 0.7};
-    Color       tu      {0.2, 0.8, 0.6};
-  
-    
-    Circle      cir_1   {{400, 400}, 300, blue};
-    Circle      cir_2   {{400, 400}, 10, tu};
-    Circle      cir_3   {{400, 400}, 280, turq};
-    Rectangle   left    {{170, 403},{120, 400}, turq};
-    Rectangle   right   {{680, 403},{620, 400}, turq};
-    Rectangle   top     {{402, 120},{398, 170}, turq};
-    Rectangle   bottom  {{402, 680},{398, 630}, turq};
-
-    cir_1.draw(win, blue, 3.0f, false);
+    cir_1.draw(win, blue, 2.0f, false);
     cir_2.draw(win, blue, 5.0f, false);
+    cir_3.draw(win, blue, 1.0f, false);
     left.draw(win, turq, 1.0f, true);
     right.draw(win, turq, 1.0f, true);  
     top.draw(win, green, 1.0f, true);
     bottom.draw(win, green, 1.0f, true);
 
     win.draw_text(690, 775, 22, "Lisa Piekarski");
-    win.draw_text(180, 370, 70, "9");
-    win.draw_text(580, 370, 70, "3");
-    win.draw_text(385, 550, 70, "6");
-    win.draw_text(370, 180, 70, "12");
+    win.draw_text(180, 365, 70, "9");
+    win.draw_text(580, 365, 70, "3");
+    win.draw_text(385, 560, 70, "6");
+    win.draw_text(370, 165, 70, "12");
     
     std::vector<Rectangle>Rectangles;
     std::vector<Circle>Circles;
