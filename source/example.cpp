@@ -1,9 +1,6 @@
 #include "window.hpp"
 #include "circle.hpp"
 #include "rectangle.hpp"
-#include "color.hpp"
-#include "vec2.hpp"
-#include "mat2.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
@@ -23,9 +20,9 @@ int main(int argc, char* argv[]) {
   Rectangle   left    {{170, 403},{120, 400}, turq};
   Rectangle   right   {{680, 403},{620, 400}, turq};
   Rectangle   top     {{402, 170},{398, 120}, turq};
-  Rectangle   bottom  {{402, 680},{398, 630}, turq};  
-  
+  Rectangle   bottom  {{402, 680},{398, 630}, turq}; 
 
+  
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
@@ -40,13 +37,12 @@ int main(int argc, char* argv[]) {
     int   hour      = t / 3600;
     float segments  = (2 * M_PI) / 60; // for analog clock
 
-
     std::string time_to_string = "time: " + std::to_string(hour) 
-                                           + "h " 
-                                           + std::to_string(minute)
-                                           + "min "
-                                           + std::to_string(second)
-                                           + "sec";
+                                          + "h " 
+                                          + std::to_string(minute)
+                                          + "min "
+                                          + std::to_string(second)
+                                          + "sec";
 
     // display time since the start of "Fensterchen"
     win.draw_text (10, 760, 30, time_to_string);
@@ -114,7 +110,6 @@ int main(int argc, char* argv[]) {
     std::vector<Rectangle>Rectangles;
     std::vector<Circle>Circles;
 
-
     Rectangles.push_back(left);
     Rectangles.push_back(right);
     Rectangles.push_back(top);
@@ -124,22 +119,17 @@ int main(int argc, char* argv[]) {
     Circles.push_back(cir_2);
     Circles.push_back(cir_3);
 
-
-    for(Rectangle const& rec: Rectangles){
-      if(rec.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){ 
+    for(Rectangle const& rec: Rectangles) {
+      if(rec.is_inside({(float) std::get<0>(win.mouse_position()), 
+        (float) std::get<1>(win.mouse_position())})) { 
         rec.draw(win, blue, 2.0f, true);
-      }
-      else{
-        rec.draw(win);
-      }
+      } rec.draw(win);
     }
+    
     for(Circle const& cir: Circles){
       if(cir.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){
         cir.draw(win, blue, 2.0f, true);
-      }
-      else{
-        cir.draw(win);
-      }
+      } cir.draw(win);    
     }
 
     win.update();
