@@ -12,9 +12,9 @@
 
 // default initialization
 Rectangle::Rectangle():
-  max_{500.0f,300.0f},
-  min_{600.0f,200.0f},
-  color_{0.7f,0.7f,0.7f} {}
+  max_{600.0f, 400.0f},
+  min_{400.0f, 200.0f},
+  color_{0.7f, 0.7f, 0.7f} {}
 
 Rectangle::Rectangle(Vec2 const& max, Vec2 const& min):
   max_{max},
