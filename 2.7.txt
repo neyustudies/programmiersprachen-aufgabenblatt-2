@@ -1,0 +1,30 @@
+Erklären Sie den Unterschied zwischen class und struct. 
+Was ist ein Datentransferobjekt (DTO)? 
+
+
+Datentransferobjekte:
+  - sind reine Datenstrukturen, die nur öffentliche Daten 
+    (Membervariablen) besitzen und keinen Auftrag oder nennenswerte 
+    Dienste durch Memberfunktionen bieten
+  - nutzen das C++-Konstrukt struct anstatt class
+
+
+            struct            |              class
+------------------------------|----------------------------------
+- keine Methoden (selten)     | - private Daten (Membervariablen)
+- keine explizit vereinbarten | - Funktionen (Memberfunktionen) 
+  Konstruktoren               |   arbeiten auf diesen Daten
+- von externen Funktionen     | - Dienste durch Objekte realisiert
+  genutzt, ohne die Daten-    |   (Auträge an Objekte)
+  struktur zu ändern          | - kein Zugriff auf interne Daten
+- direkter Zugriff auf Member |   von außen
+  (da public)                 | - nur sinnvoll bei wichtigen
+- prozeduale Vorgehensweise   |   Methoden, die Aufgaben 
+- nutzt Default Member        |   übernehmen sollen
+  Initialisierung             | 
+- nutzt direkte Initiali-     |
+  sierung (Aggregat-Init)     |
+  -> nur möglich ohne         |
+  Konstruktoren!              |
+
+
