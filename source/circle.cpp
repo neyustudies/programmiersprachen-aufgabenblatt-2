@@ -7,13 +7,12 @@
 
 #include <cmath>
 #include "circle.hpp"
-#include "vec2.hpp"
 #include "mat2.hpp"
 
 // default initialization
 Circle::Circle():
   center_{400,400},
-  radius_{200.0f},
+  radius_{100.0f},
   color_ {0.7f,0.7f,0.7f} {}
 
 Circle::Circle(Vec2 const& ctr, float r):
@@ -25,14 +24,12 @@ Circle::Circle(Vec2 const& ctr, float r, Color const& clr):
   radius_{r},
   color_ {clr} {}
 
-// area: pi * r^2
-float Circle::area() const {
-  return M_PI * pow(radius_, 2);
-}
-
 // circumference: pi * radius * 2
 float Circle::circumference() const {
-  return M_PI * radius_ * 2;
+  float circum = M_PI * radius_ * 2;
+  if(circum < 0) {
+    return circum * (-1); 
+  } return circum;
 }
 
 float Circle::radius() const {
