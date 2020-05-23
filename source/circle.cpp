@@ -45,7 +45,7 @@ Color Circle::color() const {
 }
 
 void Circle::draw(Window const& win) const {
-  for(int i = 0; i <= 500; i++) {
+  for(int i = 0; i <= 500; ++i) {
     Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
     Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
     win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b);  
@@ -55,8 +55,7 @@ void Circle::draw(Window const& win) const {
 void Circle::draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const {
   if(highlight_color == true) {
     clr = {0.1f, 0.9f, 0.6f};
-  }
-  for(int i = 0; i <= 500; i++) {
+  } for(int i = 0; i <= 500; ++i) { 
     Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
     Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
     win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b, thickness);  
