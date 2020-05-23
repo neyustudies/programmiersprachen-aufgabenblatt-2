@@ -66,10 +66,10 @@ Mat2 transpose(Mat2 const& m) {
 
 // Rotate Matrix
 Mat2 make_rotation_mat2(float phi) {
-  return Mat2{cos(phi), 
-              sin(phi)*(-1), 
-              sin(phi), 
-              cos(phi)};
+  return Mat2{std::cos(phi), 
+              std::sin(phi)*(-1), 
+              std::sin(phi), 
+              std::cos(phi)};
 }
 
 

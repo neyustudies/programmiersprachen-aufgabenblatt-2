@@ -48,14 +48,14 @@ int main(int argc, char* argv[]) {
     win.draw_text (10, 760, 30, time_to_string);
 
     // second hand
-    win.draw_line (400, 400, 180 * cos(segments * (second - 15)) + 400, 
-                   180 * sin(segments * (second - 15)) + 400, 1.0, 0.5, 0, 1.5);
+    win.draw_line (400, 400, 180 * std::cos(segments * (second - 15)) + 400, 
+                   180 * std::sin(segments * (second - 15)) + 400, 1.0, 0.5, 0, 1.5);
     // minute hand
-    win.draw_line (400, 400, 150 * cos(segments * (minute - 15)) + 400, 
-                   160 * sin(segments * (minute - 15)) + 400, 0.6, 0.5, 1.0, 2.8);
+    win.draw_line (400, 400, 150 * std::cos(segments * (minute - 15)) + 400, 
+                   160 * std::sin(segments * (minute - 15)) + 400, 0.6, 0.5, 1.0, 2.8);
     // hour hand                
-    win.draw_line (400, 400, 90  * cos(segments * 5 * (hour - 15)) + 400, 
-                   110 * sin(segments * 5 * (hour - 15)) + 400, 0.3, 1.0, 0.3, 4.5);
+    win.draw_line (400, 400, 90  * std::cos(segments * 5 * (hour - 15)) + 400, 
+                   110 * std::sin(segments * 5 * (hour - 15)) + 400, 0.3, 1.0, 0.3, 5.0);
 
 
     float x1 = 400.f + 380.f * std::sin(t);
