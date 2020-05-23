@@ -7,12 +7,10 @@
 
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-#include <cmath>
-#include "vec2.hpp"
 #include "mat2.hpp"
 #include "circle.hpp"
 #include "rectangle.hpp"
-#include "color.hpp"
+#include <cmath>
 
 
 /* ---------------------
@@ -296,8 +294,8 @@ TEST_CASE("describe_rotate", "[rotate mat2]") {
 /* ---- A u f g a b e n   2 . 9  f f ----------------------------------------*/
 
 TEST_CASE("describe_circumference_circle", "[circum circle]") {
-  Circle c1{Vec2{1, 2}, 5};
-  Circle c2{Vec2{5, 2}, 1};
+  Circle c1{};
+  Circle c2{Vec2{5, 4}, 1};
   REQUIRE(c1.circumference() == Approx(c1.radius() * 2 * M_PI));
   REQUIRE(c2.circumference() == Approx(2 * M_PI));
 
@@ -306,8 +304,10 @@ TEST_CASE("describe_circumference_circle", "[circum circle]") {
 TEST_CASE("describe_circumference_rectangle", "[circum rectangle]") {
   Rectangle r1{Vec2{1, 2}, Vec2{2, 3}};
   Rectangle r2{Vec2{5, 2}, Vec2{1, 5}};
+  Rectangle r3{Vec2{-4, 3}, Vec2{2, -7}};
   REQUIRE(r1.circumference() == Approx(4.0f));
   REQUIRE(r2.circumference() == Approx(2.0f));
+  REQUIRE(r3.circumference() == Approx(8.0f));
 }
 
 TEST_CASE("describe_color", "[color]") {

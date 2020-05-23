@@ -53,10 +53,10 @@ Mat2 inverse(Mat2 const& m) {
   if(m.det() == 0) {
     std::cerr << "Error: singular matrix, there is no inverse\n";
     return m;
-  } return Mat2{  (m.e_11 / m.det()),
-                (-(m.e_10 / m.det())),
-                (-(m.e_01 / m.det())),
-                  (m.e_00 / m.det())}; 
+  } return Mat2{(m.e_11 / m.det()),
+                (m.e_10 / m.det())*(-1),
+                (m.e_01 / m.det())*(-1),
+                (m.e_00 / m.det())}; 
 }
 
 // Transpose Matrix
@@ -66,10 +66,10 @@ Mat2 transpose(Mat2 const& m) {
 
 // Rotate Matrix
 Mat2 make_rotation_mat2(float phi) {
-  return Mat2{std::cos(phi), 
-         (-1)*std::sin(phi), 
-              std::sin(phi), 
-              std::cos(phi)};
+  return Mat2{cos(phi), 
+              sin(phi)*(-1), 
+              sin(phi), 
+              cos(phi)};
 }
 
 

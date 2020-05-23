@@ -15,7 +15,6 @@ struct Color {
   float g = 0.7f;
   float b = 0.7f;
 
-
 };
 
 #endif // COLOR_HPP

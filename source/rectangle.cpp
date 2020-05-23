@@ -5,10 +5,7 @@
  * rectangle.cpp
 */
 
-#include <cmath>
 #include "rectangle.hpp"
-#include "vec2.hpp"
-#include "color.hpp"
 
 // default initialization
 Rectangle::Rectangle():
@@ -26,8 +23,8 @@ Rectangle::Rectangle(Vec2 const& max, Vec2 const& min, Color const& clr):
   color_{clr} {}
 
 float Rectangle::circumference() const {
-  float width  = max_.x - min_.x;
-  float height = max_.y - min_.y;
+  float width  = max().x - min().x;
+  float height = max().y - min().y;
   float circum = 2 * (width + height);
   if(circum < 0) {
     return circum * (-1);
@@ -47,24 +44,24 @@ Color Rectangle::color() const {
 }
 
 void Rectangle::draw(Window const& win) const {
-  win.draw_line(min_.x, min_.y, max_.x, min_.y, color_.r, color_.g, color_.b);   // to the right
-  win.draw_line(max_.x, min_.y, max_.x, max_.y, color_.r, color_.g, color_.b);   // up
-  win.draw_line(max_.x, max_.y, min_.x, max_.y, color_.r, color_.g, color_.b);   // to the left
-  win.draw_line(min_.x, max_.y, min_.x, min_.y, color_.r, color_.g, color_.b);   // downward
+  win.draw_line(min().x, min().y, max().x, min().y, color().r, color().g, color().b);   // to the right
+  win.draw_line(max().x, min().y, max().x, max().y, color().r, color().g, color().b);   // up
+  win.draw_line(max().x, max().y, min().x, max().y, color().r, color().g, color().b);   // to the left
+  win.draw_line(min().x, max().y, min().x, min().y, color().r, color().g, color().b);   // downward
 }
 
 void Rectangle::draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const {
   if(highlight_color == true) {
     clr = {0.6, 0.9, 1.0};
   }
-  win.draw_line(min_.x, min_.y, max_.x, min_.y, color_.r, color_.g, color_.b, thickness); 
-  win.draw_line(max_.x, min_.y, max_.x, max_.y, color_.r, color_.g, color_.b, thickness); 
-  win.draw_line(max_.x, max_.y, min_.x, max_.y, color_.r, color_.g, color_.b, thickness); 
-  win.draw_line(min_.x, max_.y, min_.x, min_.y, color_.r, color_.g, color_.b, thickness); 
+  win.draw_line(min().x, min().y, max().x, min().y, color().r, color().g, color().b, thickness); 
+  win.draw_line(max().x, min().y, max().x, max().y, color().r, color().g, color().b, thickness); 
+  win.draw_line(max().x, max().y, min().x, max().y, color().r, color().g, color().b, thickness); 
+  win.draw_line(min().x, max().y, min().x, min().y, color().r, color().g, color().b, thickness); 
 }
 
 bool Rectangle::is_inside(Vec2 const& point) const {
-  if(point.x < max_.x && point.y < max_.y && point.x > min_.x && point.y > min_.y){
+  if(point.x < max().x && point.y < max().y && point.x > min().x && point.y > min().y){
     return true;
   } return false;   
 }

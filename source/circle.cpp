@@ -5,9 +5,9 @@
  * circle.cpp
 */
 
-#include <cmath>
 #include "circle.hpp"
 #include "mat2.hpp"
+#include <cmath>
 
 // default initialization
 Circle::Circle():
@@ -26,7 +26,7 @@ Circle::Circle(Vec2 const& ctr, float r, Color const& clr):
 
 // circumference: pi * radius * 2
 float Circle::circumference() const {
-  float circum = M_PI * radius_ * 2;
+  float circum = M_PI * radius() * 2;
   if(circum < 0) {
     return circum * (-1); 
   } return circum;
@@ -46,9 +46,9 @@ Color Circle::color() const {
 
 void Circle::draw(Window const& win) const {
   for(int i = 0; i <= 500; i++) {
-    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius_, 0} + center_;
-    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius_, 0} + center_;
-    win.draw_line(start.x, start.y, end.x, end.y, color_.r, color_.g, color_.b);  
+    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
+    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
+    win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b);  
   }
 }
 
@@ -57,15 +57,15 @@ void Circle::draw(Window const& win, Color clr, float thickness, bool const& hig
     clr = {0.1f, 0.9f, 0.6f};
   }
   for(int i = 0; i <= 500; i++) {
-    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius_, 0} + center_;
-    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius_, 0} + center_;
-    win.draw_line(start.x, start.y, end.x, end.y, color_.r, color_.g, color_.b, thickness);  
+    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
+    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
+    win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b, thickness);  
   }
 }
 
 bool Circle::is_inside(Vec2 const& point) const {
-  float distance = std::sqrt(std::pow((point.x - center_.x), 2.0f) + std::pow((point.y - center_.y), 2.0f));
-  if(distance > radius_) {
+  float distance = std::sqrt(std::pow((point.x - center().x), 2.0f) + std::pow((point.y - center().y), 2.0f));
+  if(distance > radius()) {
     return false;
   } return true;
 }

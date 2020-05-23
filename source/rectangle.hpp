@@ -19,15 +19,11 @@ class Rectangle {
     Rectangle();
     Rectangle(Vec2 const& min, Vec2 const& max);
     Rectangle(Vec2 const& min, Vec2 const& max, Color const& clr);
-    float area() const;
     float circumference() const;
-    float width() const;
-    float height() const;
     Vec2 max() const;
     Vec2 min() const;
     Color color() const;
     void draw(Window const& win) const;
-    void draw(Window const& win, Color const& clr) const;
     void draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const;
     bool is_inside(Vec2 const& point) const;
 
