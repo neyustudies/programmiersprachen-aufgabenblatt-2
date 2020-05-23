@@ -126,8 +126,9 @@ int main(int argc, char* argv[]) {
       } rec.draw(win);
     }
     
-    for(Circle const& cir: Circles){
-      if(cir.is_inside({(float) std::get<0>(win.mouse_position()), (float) std::get<1>(win.mouse_position())})){
+    for(Circle const& cir: Circles) {
+      if(cir.is_inside({(float) std::get<0>(win.mouse_position()), 
+        (float) std::get<1>(win.mouse_position())})) {
         cir.draw(win, blue, 2.0f, true);
       } cir.draw(win);    
     }
