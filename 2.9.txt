@@ -4,15 +4,15 @@ einer Methode und einer freien Funktion?
 
 Ja! 
 
-// .hpp                         // .cpp
-float circumference() const;    float Rectangle::circumference() const {}
+// class.hpp                    // class.cpp
+float circumference() const;    float Class::circumference() const {}
 
 
-Es handelt sich hierbei um eine Memberfunktion der Klasse Rectangle.
-Das Methoden-const verspricht, dass die Methode den Zustand des Objekts,
-auf dem sie aufgerufen wird, nicht verändert. Somit ist keine Modifikation
-möglich. Auf const Objekten können außerdem nur const-Memberfunktionen
-aufgerufen werden.
+Es handelt sich hierbei um eine Memberfunktion der Klasse Rectangle
+bzw Circle. Das Methoden-const verspricht, dass die Methode den Zustand 
+des Objekts, auf dem sie aufgerufen wird, nicht verändert. Somit ist keine 
+Modifikation möglich. Auf const Objekten können außerdem nur const-
+Memberfunktionen aufgerufen werden.
 
 Freie Funktionen hingegen sind keine Methoden, auch wenn sie eine Klassen-
 zugehörigkeit besitzen und ebenso in .hpp deklariert und in .cpp implementiert
