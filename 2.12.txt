@@ -1,0 +1,7 @@
+Was bedeutet der Begriff Überladen in C++?
+
+Überladen bedeutet, dass zwei Funktionen oder Operatoren des 
+gleichen Namens unterschiedliche Argument- bzw. Operanden-Typen besitzen.
+Folglich können mehrere Definitionen für ein und denselben Funktionsnamen
+existieren. Funktionen, die sich lediglich durch den Rückgabetypen
+unterscheiden, können nicht überladen werden.
