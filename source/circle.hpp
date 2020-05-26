@@ -30,6 +30,7 @@ class Circle {
     Vec2 center_;
     float radius_ = 0.0f;
     Color color_;
+    Color highlight_color_;
 
 
 };

@@ -11,18 +11,19 @@
 
 // default initialization
 Circle::Circle():
-  center_{400,400},
-  radius_{100.0f},
-  color_ {0.7f,0.7f,0.7f} {}
+  center_           {400,400},
+  radius_           {100.0f},
+  color_            {0.7f,0.7f,0.7f},
+  highlight_color_  {0.1f,0.8f,0.7f} {}
 
 Circle::Circle(Vec2 const& ctr, float r):
-  center_{ctr},
-  radius_{r} {}
+  center_ {ctr},
+  radius_ {r} {}
 
 Circle::Circle(Vec2 const& ctr, float r, Color const& clr):
-  center_{ctr},
-  radius_{r},
-  color_ {clr} {}
+  center_ {ctr},
+  radius_ {r},
+  color_  {clr} {}
 
 // circumference: pi * radius * 2
 float Circle::circumference() const {
@@ -54,7 +55,7 @@ void Circle::draw(Window const& win) const {
 
 void Circle::draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const {
   if(highlight_color == true) {
-    clr = {0.1f, 0.9f, 0.6f};
+    clr = highlight_color_;
   } for(int i = 0; i <= 500; ++i) { 
     Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
     Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
