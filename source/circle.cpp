@@ -47,9 +47,9 @@ Color Circle::color() const {
 
 void Circle::draw(Window const& win) const {
   for(int i = 0; i <= 500; ++i) {
-    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
-    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
-    win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b);  
+    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius_, 0} + center_;
+    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius_, 0} + center_;
+    win.draw_line(start.x, start.y, end.x, end.y, color_.r, color_.g, color_.b);  
   }
 }
 
@@ -57,15 +57,15 @@ void Circle::draw(Window const& win, Color clr, float thickness, bool const& hig
   if(highlight_color == true) {
     clr = highlight_color_;
   } for(int i = 0; i <= 500; ++i) { 
-    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius(), 0} + center();
-    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius(), 0} + center();
-    win.draw_line(start.x, start.y, end.x, end.y, color().r, color().g, color().b, thickness);  
+    Vec2 start = make_rotation_mat2((2 * M_PI)/500 * i) * Vec2{radius_, 0} + center_;
+    Vec2 end = make_rotation_mat2((2 * M_PI)/500 * (i+1)) * Vec2{radius_, 0} + center_;
+    win.draw_line(start.x, start.y, end.x, end.y, color_.r, color_.g, color_.b, thickness);  
   }
 }
 
 bool Circle::is_inside(Vec2 const& point) const {
-  float distance = std::sqrt(std::pow((point.x - center().x), 2.0f) + std::pow((point.y - center().y), 2.0f));
-  if(distance > radius()) {
+  float distance = std::sqrt(std::pow((point.x - center_.x), 2.0f) + std::pow((point.y - center_.y), 2.0f));
+  if(distance > radius_) {
     return false;
   } return true;
 }
