@@ -9,18 +9,19 @@
 
 // default initialization
 Rectangle::Rectangle():
-  max_{600.0f, 400.0f},
-  min_{400.0f, 200.0f},
-  color_{0.7f, 0.7f, 0.7f} {}
+  max_              {600.0f, 400.0f},
+  min_              {400.0f, 200.0f},
+  color_            {0.7f, 0.7f, 0.7f},
+  highlight_color_  {0.1f,0.8f,0.7f} {}
 
 Rectangle::Rectangle(Vec2 const& max, Vec2 const& min):
-  max_{max},
-  min_{min} {}
+  max_    {max},
+  min_    {min} {}
 
 Rectangle::Rectangle(Vec2 const& max, Vec2 const& min, Color const& clr):
-  max_{max},
-  min_{min},
-  color_{clr} {}
+  max_    {max},
+  min_    {min},
+  color_  {clr} {}
 
 float Rectangle::circumference() const {
   float width  = max_.x - min_.x;
@@ -52,7 +53,7 @@ void Rectangle::draw(Window const& win) const {
 
 void Rectangle::draw(Window const& win, Color clr, float thickness, bool const& highlight_color) const {
   if(highlight_color == true) {
-    clr = {0.6, 0.9, 1.0};
+    clr = highlight_color_;
   } win.draw_line(min_.x, min_.y, max_.x, min_.y, color_.r, color_.g, color_.b, thickness); 
     win.draw_line(max_.x, min_.y, max_.x, max_.y, color_.r, color_.g, color_.b, thickness); 
     win.draw_line(max_.x, max_.y, min_.x, max_.y, color_.r, color_.g, color_.b, thickness); 

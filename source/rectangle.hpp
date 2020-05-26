@@ -28,9 +28,10 @@ class Rectangle {
     bool is_inside(Vec2 const& point) const;
 
   private:
-    Vec2 max_;
-    Vec2 min_;
+    Vec2  max_;
+    Vec2  min_;
     Color color_;
+    Color highlight_color_;
 
 };
 
