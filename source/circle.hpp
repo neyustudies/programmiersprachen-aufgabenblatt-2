@@ -28,7 +28,7 @@ class Circle {
 
   private:
     Vec2 center_;
-    float radius_ = 0.0f;
+    float radius_;
     Color color_;
     Color highlight_color_;
 
